@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #ffffff;
+  height: 20%;
+  color: rgb(1, 2, 12);
+  text-align: left;
+}
+
+.App-logo {
+  margin-left: 2%;
+  height: 100%;
+  position: relative;
+  float: left;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-logo > img {
+  height: 80%;
+}
+
+h2 {
+  margin: 0 1%;
+  position: relative;
+  float: left;
+  height: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

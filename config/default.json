@@ -1,0 +1,28 @@
+{
+  "jwt": {
+    "expiration": 18000,
+    "idleTimeoutSec": 18000
+  },
+  "db": {
+    "options": {
+      "dialectOptions": {
+        "ssl": true
+      },
+      "logging": false
+    }
+  },
+  "logger": {
+    "stdout": true,
+    "minLevel": "info"
+  },
+  "logentries": {
+    "minLevel": 3
+  },
+  "constants": {
+    "globalConstant": 42
+  },
+  "cache": {
+    "ttl": 300
+  },
+  "apiVersion": "1.0.0"
+}

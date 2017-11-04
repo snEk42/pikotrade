@@ -1,0 +1,40 @@
+{
+  "name": "pikotrade",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "dbsync": "node dbsync.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build && npm prune --production"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "~1.18.2",
+    "bunyan": "^1.8.12",
+    "config": "^1.27.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jade": "~1.11.0",
+    "jsonschema": "^1.2.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "pg-parse-float": "0.0.1",
+    "redis": "^2.8.0",
+    "sendgrid": "^5.2.3",
+    "sequelize": "^3.30.4",
+    "serve-favicon": "~2.4.5",
+    "shortid": "^2.2.8",
+    "socket.io": "^2.0.4",
+    "socket.io-redis": "^5.2.0",
+    "traverse": "^0.6.6"
+  },
+  "devDependencies": {
+    "@strv/eslint-config-javascript": "^7.8.0",
+    "dotenv": "^4.0.0",
+    "eslint": "^4.10.0"
+  }
+}

@@ -1,0 +1,17 @@
+build/
+.idea/
+.vscode/
+node_modules/
+coverage/
+doc/
+config/local*
+*.iml
+npm-debug.log
+run-prod.sh
+templates/
+run.sh
+.env
+.happypack/
+newrelic_agent.log
+flow-typed/
+yarn.lock

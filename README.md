@@ -1,2 +1,2 @@
-# pikotrade
-Web app simulating trade exchange for purpose of summer camp game.
+# Pikotrade
+Web app simulating trade exchange for purpose of math competition.

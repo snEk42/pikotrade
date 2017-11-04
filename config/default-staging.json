@@ -1,0 +1,14 @@
+{
+  "db": {
+    "options": {
+      "logging": true
+    }
+  },
+  "hostname": "https://pikotrade-staging.herokuapp.com/",
+  "sendgrid": {
+    "fromAddress": "app@pikotrade-staging.herokuapp.com",
+    "fromName" : "Pikotrade (staging)",
+    "developerRecipient": "erhart.jiri@google.com",
+    "genericEmailTemplateId": "bhclasdbclasjbcsjbdchsabcscbjs"
+  }
+}

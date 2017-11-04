@@ -1,0 +1,10 @@
+{
+  "db": {
+    "options": {
+      "pool": {
+        "maxConnections": 3
+      }
+    }
+  },
+  "hostname": "http://localhost:3000/"
+}

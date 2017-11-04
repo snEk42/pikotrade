@@ -1,0 +1,11 @@
+{
+  "db": {
+    "url": "DATABASE_URL"
+  },
+  "jwt": {
+    "secret": "JWT_SECRET"
+  },
+  "redis": {
+    "connectionString": "REDISCLOUD_URL"
+  }
+}

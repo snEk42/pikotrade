@@ -1,0 +1,12 @@
+{
+  "hostname": "https://pikotrade.herokuapp.com/",
+  "sendgrid": {
+    "fromAddress": "app@pikotrade.herokuapp.com",
+    "fromName" : "Pikotrade",
+    "developerRecipient": "erhart.jiri@google.com",
+    "genericEmailTemplateId": "bhclasdbclasjbcsjbdchsabcscbjs"
+  },
+  "cache": {
+    "ttl": 86400
+  }
+}

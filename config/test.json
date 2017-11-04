@@ -1,0 +1,19 @@
+{
+  "db": {
+    "options": {
+      "dialectOptions": {
+        "ssl": false
+      },
+      "pool": {
+        "maxConnections": 20
+      },
+      "logging": false
+    }
+  },
+  "logger": {
+    "stdout": false
+  },
+  "cache": {
+    "ttl": 30
+  }
+}
