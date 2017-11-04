@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const  socket = openSocket('http://localhost:3000');
+const  socket = openSocket('https://pikotrade-staging.herokuapp.com/');
 function subscribeToExchangeRateChange(cb) {
   socket.on('exchangeRateChange', exchangeRates => cb(null, exchangeRates));
   socket.emit('subscribeToExchangeRateChange', 1000);
