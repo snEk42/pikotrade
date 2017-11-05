@@ -1,6 +1,6 @@
 import { subscribeToExchangeRateChange } from './sockets';
 import React, { Component } from 'react';
-import logo from './static/images/maso_logo.png';
+import masoLogo from './static/images/maso_logo.png';
 import enums from './enums';
 import './App.css';
 import Highcharts from 'highcharts';
@@ -93,9 +93,15 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <div className="App-logo">
-            <img src={logo}  alt="logo" />
+            <img src={masoLogo}  alt="logo" />
           </div>
           <h2>Burza</h2>
+          <table>
+            <tr>
+              <td>Banany</td>
+              <td>Kamen</td>
+            </tr>
+          </table>
         </div>
 
         <LiveGraph />
