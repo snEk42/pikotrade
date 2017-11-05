@@ -17,7 +17,6 @@ let socketServer = null
 const initPublish = server => {
   socketServer = server
   socketServer.on('connection', client => {
-    console.log('BITCHING')
     client.on('authentication', data => {
       authorizeToken(data.accessToken, null, (err, tokenData) => {
         if (err || !tokenData || (tokenData && (!tokenData.user || !tokenData.user.id))) {
@@ -29,7 +28,6 @@ const initPublish = server => {
       })
     })
     client.on('subscribeToExchangeRateChange', () => {
-      console.log('JEAH BITCHES')
       publishToClient(client, 'exchangeRateChange')
       const roomId = 1
       return client.join(roomId)

@@ -33,8 +33,8 @@ function enumize(enumDefinition) {
 }
 
 exports.COMMODITIES = enumize({
-  BANANAS: { id: 1, name: 'Banány', median: 10 },
-  ROCK: { id: 2, name: 'Kámen', median: 20 },
-  WOOD: { id: 3, name: 'Dřevo', median: 20 },
-  DIAMONDS: { id: 4, name: 'Diamanty', median: 30 },
+  BANANAS: { id: 1, name: 'Banány', median: 20 },
+  ROCK: { id: 2, name: 'Kámen', median: 40 },
+  WOOD: { id: 3, name: 'Dřevo', median: 40 },
+  DIAMONDS: { id: 4, name: 'Diamanty', median: 60 },
 })
