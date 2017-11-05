@@ -16,7 +16,7 @@ module.exports = class Sell extends TransactionalService {
       properties: {
         teamId: { type: 'number', required: true, minimum: 1 },
         commodityId: { type: 'number', required: true, enum: enums.COMMODITIES.idsAsEnum },
-        amount: { type: 'number', required: true, minimum: 1, maximum: 30 },
+        amount: { type: 'number', required: true, minimum: 1, maximum: 4 },
       },
     }
   }
