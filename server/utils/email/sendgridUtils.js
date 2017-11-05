@@ -6,7 +6,6 @@ const logger = require('./../logger').errorLogger
 const emailTemplates = require('./emailTemplates')
 
 const sendgridConfig = config.get('sendgrid')
-console.log(sendgridConfig)
 const sendgridClient = require('sendgrid')(sendgridConfig.apiKey)
 const sendgridHelper = require('sendgrid').mail
 
