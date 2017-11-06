@@ -8,13 +8,17 @@ import ReactHighcharts from 'react-highcharts';
 
 class LiveGraph extends Component {
 
+  maxDisplayedPoints = 20
+
   constructor(props) {
     super(props);
     subscribeToExchangeRateChange((err, exchangeRateChanges) => {
       if (exchangeRateChanges) {
-        let chart = this.refs.chart.getChart();
+        const chart = this.refs.chart.getChart();
+        const removePoints = chart.series[change.commodityId-1].points.length >= this.maxDisplayedPoints;
         exchangeRateChanges.forEach(change => {
-            chart.series[change.commodityId-1].addPoint({ x: new Date(change.time).getTime(), y: change.exchangeRate });
+          const redraw = change.commodityId === enums.COMMODITIES.idsAsEnum.length;
+          chart.series[change.commodityId-1].addPoint({ x: new Date(change.time).getTime(), y: change.exchangeRate }, redraw, removePoints);
         })
       }
     });
@@ -22,7 +26,7 @@ class LiveGraph extends Component {
 
   componentDidMount() {
     let chart = this.refs.chart.getChart();
-    return fetch('/api/commodities')
+    return fetch(`/api/commodities?limit=${this.maxDisplayedPoints}`)
       .then(res => res.json())
       .then(data => {
         data.forEach(commodity => {

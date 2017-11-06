@@ -6,10 +6,10 @@ const db = require('../server/dataAccess')
 const cryptoUtils = require('../server/utils/cryptoUtils')
 
 const newUser = {
-  firstName: 'Jiri',
-  lastName: 'Erhart',
-  email: 'erhart.jiri@gmail.com',
-  password: 'Password123!',
+  firstName: 'Franta',
+  lastName: 'Vomacka',
+  email: 'dummy@example.com',
+  password: 'dummy',
   confirmed: true,
   publicToken: null,
 }
