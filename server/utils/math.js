@@ -42,12 +42,12 @@ const calculateNewExchangeRates = (order, commodities) => {
 function getCommodityWeight(commodityId) {
   switch (commodityId) {
     case enums.COMMODITIES.BANANAS.id:
-      return 1
+      return 3
     case enums.COMMODITIES.WOOD.id:
     case enums.COMMODITIES.ROCK.id:
       return 2
     default:
-      return 3
+      return 1
   }
 }
 
