@@ -82,7 +82,9 @@ class LiveGraph extends Component {
       series: enums.COMMODITIES.idsAsEnum.map(function(id) {
         return {
           name: enums.COMMODITIES.ids[id].name,
-          data: []
+          data: [],
+          lineWidth: 5,
+          color: enums.COMMODITIES.ids[id].color
         }
       })
     };
