@@ -28,7 +28,7 @@ const calculateNewExchangeRates = (order, commodities) => {
   return commodities.map(commodity => {
     const newValue = commodity.id === order.commodityId
       ? commodity.value + (koeficient * order.amount)
-      : commodity.value - ((koeficient * order.amount / 3) / getCommodityWeight(order.commodityId))
+      : commodity.value - ((koeficient * order.amount / 3) * getCommodityWeight(order.commodityId))
     return {
       commodityId: commodity.id,
       index: commodity.index + 1,
