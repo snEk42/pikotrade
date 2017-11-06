@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@strv/eslint-config-javascript": "^7.8.0",
-    "eslint": "^4.10.0"
+    "eslint": "^4.10.0",
+    "request-promise": "^4.2.2"
   }
 }

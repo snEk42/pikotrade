@@ -8,7 +8,7 @@ import ReactHighcharts from 'react-highcharts';
 
 class LiveGraph extends Component {
 
-  maxDisplayedPoints = 30
+  maxDisplayedPoints = 90
 
   constructor(props) {
     super(props);
