@@ -8,7 +8,7 @@ import ReactHighcharts from 'react-highcharts';
 
 class LiveGraph extends Component {
 
-  maxDisplayedPoints = 20
+  maxDisplayedPoints = 30
 
   constructor(props) {
     super(props);
@@ -52,8 +52,8 @@ class LiveGraph extends Component {
           text: ''
       },
       xAxis: {
-          type: 'datetime',
-          tickPixelInterval: 150
+          type: 'linear'
+          //tickPixelInterval: 150
       },
       yAxis: {
           title: {

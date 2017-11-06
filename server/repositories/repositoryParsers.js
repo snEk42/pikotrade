@@ -80,12 +80,14 @@ function parseCommodity(commodity) {
 
   if (commodity.exchangeRates && commodity.exchangeRates.length > 0) {
     parsedCommodity.value = commodity.exchangeRates[0].value
+    parsedCommodity.index = commodity.exchangeRates[0].index
     parsedCommodity.exchangeRate = commodity.exchangeRates[0].exchangeRate
     parsedCommodity.data = parseData(commodity.exchangeRates)
   } else {
     parsedCommodity.value = 0
+    parsedCommodity.index = 0
     parsedCommodity.exchangeRate = calculateExchangeRate(0, commodity.median)
-    parsedCommodity.data = [{ x: new Date().getTime(), y: parsedCommodity.exchangeRate }]
+    parsedCommodity.data = [{ x: parsedCommodity.index, y: parsedCommodity.exchangeRate }]
   }
 
   return parsedCommodity
@@ -97,7 +99,7 @@ function parseCommodities(commodities) {
 
 function parseData(exchangeRates) {
   return exchangeRates.map(rate => ({
-    x: new Date(rate.time).getTime(),
+    x: rate.index,
     y: rate.exchangeRate,
   }))
 }

@@ -30,6 +30,7 @@ const calculateNewExchangeRates = (order, commodities) => {
       : commodity.value - (koeficient * order.amount / 3)
     return {
       commodityId: commodity.id,
+      index: commodity.index + 1,
       time: new Date().toISOString(),
       value: newValue,
       exchangeRate: calculateExchangeRate(newValue, commodity.median),
