@@ -18,7 +18,7 @@ class LiveGraph extends Component {
         const removePoints = chart.series[0].points.length >= this.maxDisplayedPoints;
         exchangeRateChanges.forEach(change => {
           const redraw = change.commodityId === enums.COMMODITIES.idsAsEnum.length;
-          chart.series[change.commodityId-1].addPoint({ x: new Date(change.time).getTime(), y: change.exchangeRate }, redraw, removePoints);
+          chart.series[change.commodityId-1].addPoint({ x: change.index, y: change.exchangeRate }, redraw, removePoints);
         })
       }
     });
