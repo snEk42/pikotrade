@@ -78,14 +78,15 @@ export class LiveGraph extends Component {
               allowPointSelect: false
           }
       },
-      // legend: {
-      //   align: 'right',
-      //   verticalAlign: 'top',
-      //   zIndex: 3000,
-      //   x: -10,
-      //   y: 0,
-      //   floating: true
-      // },
+      legend: {
+        enabled: false,
+        align: 'right',
+        verticalAlign: 'top',
+        zIndex: 3000,
+        x: -10,
+        y: 0,
+        floating: true
+      },
       exporting: {
           enabled: false
       },
