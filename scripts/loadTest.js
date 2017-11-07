@@ -4,7 +4,7 @@ const request = require('request-promise')
 const Promise = require('bluebird')
 
 function getRandomCommodityId() {
-  const randomness = getRandomInt(1, 8)
+  const randomness = getRandomInt(1, 9)
   if (randomness < 4) {
     return 1
   }
