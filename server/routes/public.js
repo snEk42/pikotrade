@@ -3,6 +3,7 @@
 const { Router } = require('express')
 const users = require('../handlers/public/users')
 const commodities = require('../handlers/public/commodities')
+const teams = require('../handlers/public/teams')
 
 const router = new Router()
 
@@ -118,6 +119,8 @@ router.post('/users/reset-password', users.resetPassword)
 router.put('/users/reset-password', users.updatePassword)
 
 router.get('/commodities', commodities.getAll)
+
+router.get('/teams', teams.getAll)
 
 
 module.exports = router

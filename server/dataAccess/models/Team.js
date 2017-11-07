@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     t3: { type: DataTypes.INTEGER(11), allowNull: true, field: 'T3' },
     mp4: { type: DataTypes.STRING(30), allowNull: true, field: 'MP4' },
     t4: { type: DataTypes.INTEGER(11), allowNull: true, field: 'T4' },
-    worth: { type: DataTypes.DOUBLE, allowNull: false, defaultValue: '0', field: 'dr_body' },
+    score: { type: DataTypes.DOUBLE, allowNull: false, defaultValue: '0', field: 'dr_body' },
     room: { type: DataTypes.STRING(20), allowNull: true, field: 'mistnost' },
     site: { type: DataTypes.STRING(20), allowNull: true, field: 'site' },
     body2: { type: DataTypes.INTEGER(32), allowNull: true, field: 'body2' },

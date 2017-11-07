@@ -42,7 +42,7 @@ module.exports = class Sell extends TransactionalService {
         context.profit = calculateProfit(context.order, context.commodities)
         context.exchangeRates = calculateNewExchangeRates(context.order, context.commodities)
         return Promise.all([
-          teamRepository.update(context.team.id, { worth: context.team.worth + context.profit }, this.getExistingTransaction()),
+          teamRepository.update(context.team.id, { score: context.team.score + context.profit }, this.getExistingTransaction()),
           exchangeRateRepository.bulkCreate(context.exchangeRates, this.getExistingTransaction()),
         ])
       })

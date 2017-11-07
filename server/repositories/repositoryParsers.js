@@ -35,11 +35,15 @@ function parseTeam(team) {
   const parsedTeam = {}
   parsedTeam.id = team.id
   parsedTeam.name = team.name
-  parsedTeam.worth = team.worth
+  parsedTeam.score = team.score
   parsedTeam.arrived = team.arrived
   parsedTeam.room = team.room
   parsedTeam.site = team.site
   return parsedTeam
+}
+
+function parseTeams(teams) {
+  return teams ? _.map(teams, parseTeam) : teams
 }
 
 function parseUser(user) {
@@ -109,6 +113,7 @@ module.exports = {
   parseAdmin,
   parseUsers,
   parseUser,
+  parseTeams,
   parseTeam,
   parseCommodities,
   parseCommodity,

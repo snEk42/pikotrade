@@ -5,6 +5,7 @@ const parsers = require('./repositoryParsers')
 const appErrors = require('./../utils/errors/app')
 
 exports.findById = findById
+exports.findAll = findAll
 exports.update = update
 
 function findById(id, transaction) {
@@ -16,6 +17,18 @@ function findById(id, transaction) {
       }
       return parsers.parseTeam(team)
     })
+}
+
+function findAll(dbTransaction) {
+  return db.Team.findAll({
+    order: [[db.sequelize.col('id'), 'ASC']],
+    transaction: dbTransaction,
+  }).then(teams => {
+    if (!teams) {
+      throw new appErrors.NotFoundError()
+    }
+    return parsers.parseTeams(teams)
+  })
 }
 
 function update(id, values, transaction) {
