@@ -8,7 +8,7 @@ import ReactHighcharts from 'react-highcharts';
 
 class LiveGraph extends Component {
 
-  maxDisplayedPoints = 90
+  maxDisplayedPoints = 60
 
   constructor(props) {
     super(props);
@@ -67,6 +67,13 @@ class LiveGraph extends Component {
       },
       tooltip: {
           enabled: false
+      },
+      plotOptions: {
+          line: {
+              marker: {
+                  enabled: false
+              }
+          }
       },
       legend: {
         align: 'right',
