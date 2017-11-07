@@ -6,10 +6,10 @@ import './App.css';
 import Highcharts from 'highcharts';
 import ReactHighcharts from 'react-highcharts';
 
-class LiveGraph extends Component {
+class App extends Component {
 
   maxDisplayedPoints = 60
-
+  
   constructor(props) {
     super(props);
     subscribeToExchangeRateChange((err, exchangeRateChanges) => {
@@ -17,9 +17,9 @@ class LiveGraph extends Component {
         const chart = this.refs.chart.getChart();
         const removePoints = chart.series[0].points.length >= this.maxDisplayedPoints;
         exchangeRateChanges.forEach(change => {
-          const redraw = change.commodityId === enums.COMMODITIES.idsAsEnum.length;
-          chart.series[change.commodityId-1].addPoint({ x: change.index, y: change.exchangeRate }, redraw, removePoints);
+          chart.series[change.commodityId-1].addPoint({ x: change.index, y: change.exchangeRate }, false, removePoints);
         })
+        chart.redraw();
       }
     });
   }
@@ -30,19 +30,18 @@ class LiveGraph extends Component {
       .then(res => res.json())
       .then(data => {
         data.forEach(commodity => {
-          commodity.data.forEach(point => {
-            chart.series[commodity.id-1].addPoint(point);
-          })
+          chart.series[commodity.id-1].setData(commodity.data, false);
         })
+        chart.redraw();
       });
   }
   
   componentWillUnmount() {
     this.refs.chart.destroy();
   }
- 
+
   render() {
-    const config = {
+    const graphConfig = {
       chart: {
           type: 'line',
           animation: Highcharts.svg, // don't animate in old IE
@@ -73,6 +72,9 @@ class LiveGraph extends Component {
               marker: {
                   enabled: false
               }
+          },
+          series: {
+              allowPointSelect: false
           }
       },
       legend: {
@@ -95,13 +97,7 @@ class LiveGraph extends Component {
         }
       })
     };
-    return <ReactHighcharts config={config} ref="chart"></ReactHighcharts>;
-  }
-}
 
-class App extends Component {
-
-  render() {
     return (
       <div className="App">
         <div className="App-header">
@@ -117,7 +113,7 @@ class App extends Component {
           </table>
         </div>
 
-        <LiveGraph />
+        <ReactHighcharts config={graphConfig} ref="chart"></ReactHighcharts>;
       </div>
     );
   }
