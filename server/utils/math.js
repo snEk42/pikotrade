@@ -3,7 +3,7 @@
 const enums = require('../../common/enums')
 const _ = require('lodash')
 
-const koeficient = 0.05
+const koeficient = 0.1
 
 const calculateProfit = (order, commodities) => {
   if (_.isNil(order) || _.isNil(commodities)) {
