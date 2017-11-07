@@ -1,12 +1,24 @@
 import { subscribeToExchangeRateChange } from './sockets';
 import React, { Component } from 'react';
 import masoLogo from './static/images/maso_logo.png';
+import bananasImage from './static/images/bananas.png';
+import woodImage from './static/images/wood.jpg';
+import rockImage from './static/images/rock.png';
+import diamondsImage from './static/images/diamonds.jpg';
 import enums from './enums';
 import './App.css';
-import Highcharts from 'highcharts';
-import ReactHighcharts from 'react-highcharts';
+import { LiveGraph } from './Graph';
 
 class App extends Component {
+
+  state = {
+    exchangeRates: {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+    }
+  }
 
   maxDisplayedPoints = 60
   
@@ -14,108 +26,86 @@ class App extends Component {
     super(props);
     subscribeToExchangeRateChange((err, exchangeRateChanges) => {
       if (exchangeRateChanges) {
-        const chart = this.refs.chart.getChart();
-        const removePoints = chart.series[0].points.length >= this.maxDisplayedPoints;
+        const newExchangeRates = this.state.exchangeRates
         exchangeRateChanges.forEach(change => {
-          chart.series[change.commodityId-1].addPoint({ x: change.index, y: change.exchangeRate }, false, removePoints);
-        })
-        chart.redraw();
+          newExchangeRates[change.commodityId] = change.exchangeRate
+        });
+        this.setState({ exchangeRates: newExchangeRates, lastPoints: exchangeRateChanges });
       }
     });
   }
 
   componentDidMount() {
-    let chart = this.refs.chart.getChart();
     return fetch(`/api/commodities?limit=${this.maxDisplayedPoints}`)
       .then(res => res.json())
       .then(data => {
+        const newExchangeRates = []
         data.forEach(commodity => {
-          chart.series[commodity.id-1].setData(commodity.data, false);
-        })
-        chart.redraw();
-      });
-  }
-  
-  componentWillUnmount() {
-    this.refs.chart.destroy();
+          newExchangeRates[commodity.id] = commodity.data[commodity.data.length - 1].y
+        });
+        this.setState({ exchangeRates: newExchangeRates, data });
+      })
   }
 
   render() {
-    const graphConfig = {
-      chart: {
-          type: 'line',
-          animation: Highcharts.svg, // don't animate in old IE
-          marginRight: 10,
-      },
-      title: {
-          text: ''
-      },
-      xAxis: {
-          type: 'linear'
-          //tickPixelInterval: 150
-      },
-      yAxis: {
-          title: {
-              text: 'Kurz'
-          },
-          plotLines: [{
-              value: 0,
-              width: 1,
-              color: '#808080'
-          }]
-      },
-      tooltip: {
-          enabled: false
-      },
-      plotOptions: {
-          line: {
-              marker: {
-                  enabled: false
-              }
-          },
-          series: {
-              allowPointSelect: false
-          }
-      },
-      legend: {
-        align: 'right',
-        verticalAlign: 'top',
-        zIndex: 3000,
-        x: -10,
-        y: 0,
-        floating: true
-      },
-      exporting: {
-          enabled: false
-      },
-      series: enums.COMMODITIES.idsAsEnum.map(function(id) {
-        return {
-          name: enums.COMMODITIES.ids[id].name,
-          data: [],
-          lineWidth: 5,
-          color: enums.COMMODITIES.ids[id].color
-        }
-      })
-    };
-
     return (
       <div className="App">
         <div className="App-header">
           <div className="App-logo">
-            <img src={masoLogo}  alt="logo" />
+            <img src={masoLogo} alt="logo" />
           </div>
-          <h2>Burza</h2>
-          <table>
-            <tr>
-              <td>Banany</td>
-              <td>Kamen</td>
-            </tr>
-          </table>
+          <div className="App-exchangeRates">
+            {toPairs(enums.COMMODITIES.idsAsEnum).map(pair => {
+              return (
+                <div className="row" key={pair}>
+                  {pair.map(commodityId => {
+                    return (
+                      <div className="cell" key={commodityId}>
+                        <div className="commodityImageContainer">
+                          <img src={getImage(commodityId)} className="commodityImage" alt={enums.COMMODITIES.ids[commodityId].name} />
+                        </div>
+                        <div className="exchangeRate" style={{ color: enums.COMMODITIES.ids[commodityId].color }}>
+                          {this.state.exchangeRates[commodityId] !== 0 && this.state.exchangeRates[commodityId].toFixed(2)}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
         </div>
 
-        <ReactHighcharts config={graphConfig} ref="chart"></ReactHighcharts>;
+        <LiveGraph 
+          data={this.state.data}
+          lastPoints={this.state.lastPoints}
+          maxDisplayedPoints={this.maxDisplayedPoints}
+          ref="chart"></LiveGraph>;
       </div>
     );
+  }
+}
+
+function toPairs(arr) {
+  var groups = [];
+  for(var i = 0; i < arr.length; i += 2)
+  {
+      groups.push(arr.slice(i, i + 2));
+  }
+  return groups
+}
+
+function getImage(commodityId) {
+  switch (commodityId) {
+    case enums.COMMODITIES.BANANAS.id:
+      return bananasImage
+    case enums.COMMODITIES.ROCK.id:
+      return rockImage
+    case enums.COMMODITIES.WOOD.id:
+      return woodImage
+    case enums.COMMODITIES.DIAMONDS.id:
+    default:
+      return diamondsImage
   }
 }
 

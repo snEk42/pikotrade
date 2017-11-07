@@ -10,13 +10,13 @@
 }
 
 .App-logo {
-  margin-left: 2%;
-  height: 100%;
-  position: relative;
-  float: left;
-  display:flex;
+  margin-top: 1%;
+  height: 20%;
+  width: 100%;
+  position: absolute;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .App-logo > img {
@@ -41,4 +41,52 @@ h2 {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.commodityImage {
+  height: 100%;
+  width: auto;
+}
+
+.commodityImageContainer {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+
+.App-exchangeRates {
+  margin-top: 1%;
+  height: 18%;
+  width: 40%;
+  right: 1%;
+  position: absolute;
+  align-items: right;
+  justify-content: right;
+  text-align: right;
+}
+
+.App-exchangeRates > .row {
+  position: relative;
+  height: 50%;
+  width: 100%;
+}
+
+.App-exchangeRates > .row > .cell {
+  position: relative;
+  float: left;
+  margin: 1% 0;
+  height: 85%;
+  width: 50%;
+  text-align: center;
+}
+
+.exchangeRate {
+  text-align: left;
+  font-size: 3em;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column;*/
+  align-items: center; 
+  /* justify-content: center;*/
 }
