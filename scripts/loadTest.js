@@ -38,7 +38,7 @@ async function requestGenerator() {
     { 'postman-token': '299bf832-693e-c607-72ed-cae091a9707d',
       'cache-control': 'no-cache',
       'content-type': 'application/json',
-      authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImhhc2giOiJhMDIzMjJiMTc3YWQzMjczNTQ5YTQ4NDNhYTMxNTNlMzE3MWE0MjkzMjJhYTI0ODRmODlkNTE1YTEzMzY1MmE0IiwiaWF0IjoxNTEwMDA2MjA5LCJleHAiOjE1MTAwMjQyMDl9.4Cq2-W1auqam3UEyLX-8nUzjcskVEjz9wbdgn2VjC4g' },
+      authorization: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImhhc2giOiJkODJlOTRlZWQ0OWM4YWFlOTRlZDc4NDQzNmQxMDUyMTlmZjE4Mzc4ZjcxNWFiOTFiMGY3MWVlYWMyYjZkNGJmIiwiaWF0IjoxNTEwMTEyNTY1LCJleHAiOjE1MTAxMzA1NjV9.NzpSXMdedMwbc1D-SDKVGRxizrKcNi00C1KuuAlCY3A' },
     body: { teamId: 1, commodityId: 4, amount: 2 },
     json: true,
   }
@@ -49,7 +49,7 @@ async function requestGenerator() {
       .then(body => {
         console.log(body)
       })
-    await Promise.delay(1000)
+    await Promise.delay(200)
   }
 } // .then(() => console.log('Done'))
 

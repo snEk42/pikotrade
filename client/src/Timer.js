@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-const commencingLength = 6*60*60*1000 + 31*60*1000 //5*60*1000
-//const gameLength = 90*60*1000
+const commencingLength = 10*60*1000
 
 export class Timer extends Component {
 
@@ -9,8 +8,8 @@ export class Timer extends Component {
     super(props);
     this.state = {
       phase: getPhase(props.start, props.end),
-      msUntilStart: getMSUntil(props.start),
-      msUntilEnd: getMSUntil(props.end),
+      start: props.start,
+      end: props.end,
     };
     this.timer = null;
   }
@@ -23,16 +22,19 @@ export class Timer extends Component {
   }
 
   tick() {
-    const newState = getNewState(this.state)
-    this.setState(newState)
+    this.setState({
+      start: this.state.start,
+      end: this.state.end,
+      phase: getPhase(this.state.start, this.state.end)
+    })
   }
   
   componentWillReceiveProps(nextProps) {
     if (nextProps.start && nextProps.end) {
       this.setState({
         phase: getPhase(nextProps.start, nextProps.end),
-        msUntilStart: getMSUntil(nextProps.start),
-        msUntilEnd: getMSUntil(nextProps.end),
+        start: nextProps.start,
+        end: nextProps.end,
       });
     }
   }
@@ -54,13 +56,13 @@ export class Timer extends Component {
         {this.state.phase === 'COMMENCING'
           && <div>
               <div className="capture">Hra začne za</div>
-              <div className="value">{formattedMS(this.state.msUntilStart)}</div>
+              <div className="value">{formattedMS(getMSUntil(this.state.start))}</div>
               </div>}
 
         {this.state.phase === 'RUNNING'
           && <div>
-              <div className="capture">Hra skonci za</div>
-              <div className="value">{formattedMS(this.state.msUntilStart)}</div>}
+              <div className="capture">Hra skončí za</div>
+              <div className="value">{formattedMS(getMSUntil(this.state.end))}</div>}
               </div>}
       </div>
     );
@@ -100,26 +102,4 @@ function getMSUntil(time) {
   const nowMs = new Date().getTime();
   const difference = Math.round(timeMs - nowMs)
   return difference > 0 ? difference : 0
-}
-
-function getNewState(state) {
-  const newState = {
-    msUntilStart: state.msUntilStart - 1000,
-    msUntilEnd: state.msUntilEnd - 1000
-  }
-  newState.phase = getPhaseFromState(newState, state.phase)
-  return newState
-}
-
-function getPhaseFromState(state, currentPhase) {
-  if (Math.round(state.msUntilEnd/1000) === 0) {
-    return 'AFTER'
-  }
-  if (Math.round(state.msUntilStart/1000) === 0) {
-    return 'RUNNING'
-  }
-  if (Math.round((state.msUntilStart - commencingLength)/1000) === 0) {
-    return 'COMMENCING'
-  }
-  return currentPhase
 }
