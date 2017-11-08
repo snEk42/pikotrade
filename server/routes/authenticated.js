@@ -59,6 +59,6 @@ router.put('/users/me/personal-info', users.updatePersonalInfo)
 
 router.put('/commodities/sell', commodities.sell)
 
-router.put('/teams/increment-score', teams.incrementScore)
+// router.put('/teams/increment-score', teams.incrementScore)
 
 module.exports = router
