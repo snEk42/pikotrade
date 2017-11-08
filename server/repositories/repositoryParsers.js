@@ -108,6 +108,17 @@ function parseData(exchangeRates) {
   }))
 }
 
+function parseGame(game) {
+  if (!game) {
+    return game
+  }
+  const parsedGame = {}
+  parsedGame.id = game.id
+  parsedGame.start = game.start
+  parsedGame.end = game.end
+  return parsedGame
+}
+
 module.exports = {
   parseAccessToken,
   parseAdmin,
@@ -117,4 +128,5 @@ module.exports = {
   parseTeam,
   parseCommodities,
   parseCommodity,
+  parseGame,
 }

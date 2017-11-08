@@ -66,6 +66,48 @@ h2 {
   text-align: right;
 }
 
+.App-timer {
+  margin-top: 1%;
+  height: 18%;
+  width: 40%;
+  left: 2em;
+  position: absolute;
+  justify-content: center;
+  text-align: left;
+}
+
+.App-timer > .capture {
+  position: relative;
+  float: left;
+  height: 40%;
+  width: 100%;
+  font-size: 2.5em;
+  display: flex;
+  /* flex-direction: column;*/
+  align-items: center; 
+  /* justify-content: center;*/
+}
+
+.App-timer > .fullHeightCapture {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 100%;
+  font-size: 3em;
+  display: flex;
+  /* flex-direction: column;*/
+  align-items: center; 
+  /* justify-content: center;*/
+}
+
+.App-timer > .value {
+  position: relative;
+  float: left;
+  height: 60%;
+  width: 100%;
+  font-size: 4em;
+}
+
 .App-exchangeRates > .row {
   position: relative;
   height: 50%;

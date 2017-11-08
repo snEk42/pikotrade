@@ -16,8 +16,11 @@ if (process.env.NODE_APP_INSTANCE === 'live') {
 if (!process.env.DEVELOPMENT_SCRIPT) {
   throw new Error('Cant run without DEVELOPMENT_SCRIPT env')
 }
+
 db.sequelize.sync({ force })
-  .then(() => db.sequelize.transaction({ autocommit: false }, dbTransaction => insertCommodities(dbTransaction).then(() => insertInitialExchangeRates(dbTransaction))))
+  .then(() => db.sequelize.transaction({ autocommit: false }, dbTransaction => insertCommodities(dbTransaction)
+    .then(() => insertInitialExchangeRates(dbTransaction))
+    .then(() => insertDefaultGame(dbTransaction))))
   .then(() => {
     console.log('DB is synced.')
     return process.exit(0)
@@ -49,6 +52,14 @@ function insertInitialExchangeRates(dbTransaction) {
 function insertCommodities(dbTransaction) {
   const commodities = createIdNameData(enums.COMMODITIES)
   return db.Commodity.bulkCreate(commodities, { transaction: dbTransaction })
+}
+
+function insertDefaultGame(dbTransaction) {
+  const defaultGame = {
+    start: new Date('2017-11-08T10:00:00.000Z').toISOString(),
+    end: new Date('2017-11-08T11:30:00.000Z').toISOString(),
+  }
+  return db.Game.create(defaultGame, { transaction: dbTransaction })
 }
 
 function createIdNameData(ENUM) {

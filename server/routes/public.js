@@ -4,6 +4,7 @@ const { Router } = require('express')
 const users = require('../handlers/public/users')
 const commodities = require('../handlers/public/commodities')
 const teams = require('../handlers/public/teams')
+const games = require('../handlers/public/games')
 
 const router = new Router()
 
@@ -121,6 +122,8 @@ router.put('/users/reset-password', users.updatePassword)
 router.get('/commodities', commodities.getAll)
 
 router.get('/teams', teams.getAll)
+
+router.get('/games/:gameId', games.getById)
 
 
 module.exports = router
