@@ -49,7 +49,7 @@ async function requestGenerator() {
       .then(body => {
         console.log(body)
       })
-    await Promise.delay(200)
+    await Promise.delay(2000)
   }
 } // .then(() => console.log('Done'))
 
