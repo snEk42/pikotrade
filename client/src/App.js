@@ -58,10 +58,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Timer exchangeRates={this.state.exchangeRates}></Timer>
           <div className="App-logo">
             <img src={masoLogo} alt="logo" />
           </div>
+          <Timer
+            start={this.state.game.start}
+            end={this.state.game.end} />
           <ExchangeRates exchangeRates={this.state.exchangeRates}></ExchangeRates>
         </div>
 

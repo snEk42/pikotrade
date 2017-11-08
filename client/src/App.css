@@ -4,23 +4,22 @@
 
 .App-header {
   background-color: #ffffff;
-  height: 20%;
+  height: 19%;
   color: rgb(1, 2, 12);
   text-align: left;
 }
 
 .App-logo {
-  margin-top: 1%;
-  height: 20%;
-  width: 100%;
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 1% 1.5%;
+  height: 95%;
+  width: auto;
+  position: relative;
+  float: left;
 }
 
 .App-logo > img {
-  height: 80%;
+  height: 95%;
+  width: auto;
 }
 
 h2 {
@@ -36,11 +35,6 @@ h2 {
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .commodityImage {
@@ -67,16 +61,21 @@ h2 {
 }
 
 .App-timer {
-  margin-top: 1%;
-  height: 18%;
-  width: 40%;
-  left: 2em;
-  position: absolute;
+  padding: 1%;
+  height: 100%;
+  width: auto;
+  position: relative;
+  float: left;
   justify-content: center;
   text-align: left;
 }
 
-.App-timer > .capture {
+.App-timer > div {
+  height: 100%;
+  width: 100%;
+}
+
+.App-timer .capture {
   position: relative;
   float: left;
   height: 40%;
@@ -88,7 +87,7 @@ h2 {
   /* justify-content: center;*/
 }
 
-.App-timer > .fullHeightCapture {
+.App-timer div.fullHeightCapture {
   position: relative;
   float: left;
   height: 100%;
@@ -100,7 +99,7 @@ h2 {
   /* justify-content: center;*/
 }
 
-.App-timer > .value {
+.App-timer .value {
   position: relative;
   float: left;
   height: 60%;

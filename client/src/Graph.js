@@ -71,7 +71,7 @@ export class LiveGraph extends Component {
       plotOptions: {
           line: {
               marker: {
-                  enabled: false
+                  enabled: true
               }
           },
           series: {
@@ -99,7 +99,6 @@ export class LiveGraph extends Component {
         }
       })
     };
-    console.log('rendering chart')
     return ( <ReactHighcharts config={graphConfig} ref="chart"></ReactHighcharts> );
   }
 }
