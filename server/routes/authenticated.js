@@ -2,6 +2,7 @@
 
 const { Router } = require('express')
 const users = require('../handlers/authenticated/users')
+const teams = require('../handlers/authenticated/teams')
 const commodities = require('../handlers/authenticated/commodities')
 
 const router = new Router()
@@ -57,5 +58,7 @@ router.put('/users/me/password', users.updatePasswordAuthenticated)
 router.put('/users/me/personal-info', users.updatePersonalInfo)
 
 router.put('/commodities/sell', commodities.sell)
+
+router.put('/teams/increment-score', teams.incrementScore)
 
 module.exports = router
